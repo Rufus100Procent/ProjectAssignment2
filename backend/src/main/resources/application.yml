@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/saltmerch
+    url: jdbc:postgresql://Database:/saltmerch
     username: jensenyh
     password: password
