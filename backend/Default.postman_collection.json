@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "837ff8f7-5722-49cb-8b29-33569f173f29",
+		"name": "Default",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5723576"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all hats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/hats",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"hats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one specific product with details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/28",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all cart items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to cart",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 15,\r\n    \"title\": \"someshirt1\",\r\n    \"color\": \"Black\",\r\n    \"size\": \"M\",\r\n    \"previewImage\": \"images/salt-store-items/jacket/02.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/carts/1?action=add",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "add"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one hat with details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/hats/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"hats",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove item from cart",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 15,\r\n    \"color\": \"Black\",\r\n    \"size\": \"M\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/carts/1?action=remove",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "remove"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear cart and restock",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear cart and don't restock",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/1?buyout=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "buyout",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Postman jacket\",\r\n    \"description\": \"This is a jacket created from Postman\",\r\n    \"previewImage\": \"images/salt-store-items/jacket/02.jpg\",\r\n    \"variants\": [\r\n        {\r\n            \"colorName\": \"Red\",\r\n            \"images\": [\r\n                \"images/salt-store-items/hat/02.jpg\"\r\n            ],\r\n            \"sizes\": [\r\n                {\r\n                    \"size\": \"M\",\r\n                    \"stock\": 6\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/jackets",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"jackets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete specific product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/30",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create variant for a specific product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"colorName\": \"Pink\",\r\n    \"images\": [\r\n        \"images/salt-store-items/hat/02.jpg\"\r\n    ],\r\n    \"sizes\": [\r\n        {\r\n            \"size\": \"onesize\",\r\n            \"stock\": 11\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/28/variants",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"28",
+						"variants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create specific variant from product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/28/variants?color=red",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"28",
+						"variants"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "red"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restock specific size/color product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/products/31/variants/stock?size=S&color=Green&quantity=10",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"31",
+						"variants",
+						"stock"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "S"
+						},
+						{
+							"key": "color",
+							"value": "Green"
+						},
+						{
+							"key": "quantity",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a specific product's meta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"A mod haat2\",\r\n    \"description\": \"A hat that was modified through pgAdmin2\",\r\n    \"previewImage\": \"images/salt-store-items/hat/02.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/products/28",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"products",
+						"28"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

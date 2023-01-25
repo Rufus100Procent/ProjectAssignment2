@@ -1,0 +1,19 @@
+{
+  "hats": {
+    "category": "hats",
+    "title": "Hats",
+    "description": "Are you looking for some cool and awesome-looking hats? Here you will find our great selection of beautiful SALT Hats merch. Go on, pick out the right one for you!"
+  }, "jackets": {
+    "category": "jackets",
+    "title": "Jackets",
+    "description": "Are you looking for some cool and awesome-looking jackets? Here you will find our great selection of beautiful SALT Jackets merch. Go on, pick out the right one for you!"
+  }, "tshirts": {
+    "category": "tshirts",
+    "title": "T-Shirts",
+    "description": "Are you looking for some cool and awesome-looking T-Shirts? Here you will find our great selection of beautiful SALT T-Shirts merch. Go on, pick out the right one for you!"
+  }, "bags": {
+    "category": "bags",
+    "title": "Bags",
+    "description": "Are you looking for some cool and awesome-looking Bags? Here you will find our great selection of beautiful SALT Bags merch. Go on, pick out the right one for you!"
+  }
+}
