@@ -10,7 +10,7 @@ pipeline {
               steps {
                   sh 'mvn clean'
                   echo 'downloading github project...'
-                  git 'https://github.com/Rufus100Procent/ProjectAssignment2.git'
+                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Rufus100Procent/ProjectAssignment2.git']])
 
               }
           }
