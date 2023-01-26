@@ -10,6 +10,8 @@ pipeline {
               steps {
                   sh 'mvn clean'
                   echo 'downloading github project...'
+                  git 'https://github.com/Rufus100Procent/ProjectAssignment2.git'
+
               }
           }
 
