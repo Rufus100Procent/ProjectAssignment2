@@ -1,0 +1,45 @@
+services:
+  frontend:
+    container_name: frontend
+    build: frontend/.
+    ports:
+      - "3010:3010"
+    volumes:
+      - ./frontend/:/project-root
+      - /project-root/node_modules
+    restart: unless-stopped
+    command: "npm run serve"
+  database:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_DB: saltmerch
+      POSTGRES_USER: jensenyh
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/saltmerch-db
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/data:/data/saltmerch-db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  tomcat:
+    container_name: tomcat
+    build: ./tomcat
+    volumes:
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+      - /database/folder3
+    ports:
+      - "8099:8080"
+    restart: unless-stopped
+  jenkins:
+    container_name: jenkins
+    build: ./jenkins
+    volumes:
+     - ./jenkins/folder1:/var
+     - ./jenkins/m2repo:/root/m2/repository
+    ports:
+        - 8050:8080
+        - 50000:50000
+    restart: unless-stopped
+ 
