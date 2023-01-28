@@ -2,7 +2,7 @@ pipeline {
       agent any
 
       tools {
-          maven "3.8.7"
+          maven "MY_MAVEN"
       }
 
       stages {
@@ -35,16 +35,15 @@ pipeline {
               steps {
                   echo 'packaging...'
                   sh 'mvn war:war'
-                  echo 'packaged'
-              }
-          }
-      }
+                   echo 'packaged'
+                }
+            }
+          stage('Deploy') {
+            steps {
+                sh 'docker-compose -f docker-compose.yml up -d --build'
+                sh 'rm -rf /home/stykle/ProjectAssigment2/webapps/'
+                sh 'docker cp ROOT.war tomcat:/usr/local/tomcat/webapps'
+                sh 'docker exec tomcat /usr/local/tomcat/bin/catalina.sh run'            }
+            }
 
-      post {
-          always {
-              echo 'generating test report....'
-              junit 'target/*reports/**/*.xml'
-              echo 'test report generated'
-          }
-      }
 }
