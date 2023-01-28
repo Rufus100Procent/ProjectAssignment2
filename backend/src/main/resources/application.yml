@@ -1,5 +1,0 @@
-spring:
-  datasource:
-    url: url=jdbc:postgresql://database:5432/saltmerch
-    username: jensenyh
-    password: password
