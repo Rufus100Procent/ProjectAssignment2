@@ -41,7 +41,7 @@ pipeline {
           stage('Deploy') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d --build'
-                sh 'rm -rf /home/stykle/ProjectAssigment2/webapps/'
+                sh 'rm -rf ./webapps'
                 sh 'docker cp ROOT.war tomcat:/usr/local/tomcat/webapps'
                 sh 'docker exec tomcat /usr/local/tomcat/bin/catalina.sh run'            }
             }

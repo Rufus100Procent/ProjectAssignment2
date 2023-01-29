@@ -36,7 +36,7 @@ services:
     container_name: jenkins
     build: ./jenkins
     volumes:
-     - ./jenkins_home:/var/jenkins_home
+     - ./jenkins:/var/jenkins_home
      - /var/run/docker.sock:/var/run/docker.sock
     ports:
         - 8050:8080
@@ -48,5 +48,5 @@ volumes:
   nodemodules:
     name: nodemodules
   jenkins_home:
-    name: jenkins_home
+    name: jenkins_Home
  
