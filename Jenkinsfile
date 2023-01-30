@@ -11,6 +11,7 @@ pipeline {
                 sh 'mvn -f ./backend/pom.xml  clean' 
             
         }
+        }
         stage ('test') {
             steps {
                 sh 'mvn test' .
