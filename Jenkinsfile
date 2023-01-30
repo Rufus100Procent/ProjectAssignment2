@@ -6,25 +6,25 @@ pipeline {
     }
 
     stages {
-        stage ('build') {
+        stage ('clean') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean'
             }
             
         }
-        stage ('build') {
+        stage ('test') {
             steps {
                 sh 'mvn test'
             }
             
         }
-        stage ('build') {
+        stage ('package') {
             steps {
                 sh 'mvn package'
             }
             
         }
-        stage ('build') {
+        stage ('deploy') {
             steps {
                 sh 'mvn deploy'
             }
