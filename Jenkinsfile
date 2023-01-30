@@ -1,30 +1,34 @@
 pipeline {
-    
-     agent any
+    agent any
 
-      tools {
-          maven "MY_MAVEN"
-      }
+    tools {
+        maven "MY_MAVEN"
+    }
 
-  stages {
-        stage('Build') {
+    stages {
+        stage ('build') {
             steps {
                 sh 'mvn clean install' ./backend
             }
+            
         }
-        stage('Test') {
+        stage ('build') {
             steps {
                 sh 'mvn test' ./backend
             }
+            
         }
-        stage('Package') {
+        stage ('build') {
             steps {
                 sh 'mvn package' ./backend
             }
+            
         }
-        stage('Deploy') {
+        stage ('build') {
             steps {
                 sh 'mvn deploy' ./backend
             }
-         }
+            
+        }
+    }
 }
