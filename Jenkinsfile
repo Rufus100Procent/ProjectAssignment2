@@ -8,25 +8,24 @@ pipeline {
     stages {
         stage ('clean') {
             steps {
-                sh 'mvn clean'
-            }
+                sh 'mvn -f ./backend/pom.xml  clean' 
             
         }
         stage ('test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test' .
             }
             
         }
         stage ('package') {
             steps {
-                sh 'mvn package'
+                sh 'mvn -f ./backend/pom.xml  package' 
             }
             
         }
         stage ('deploy') {
             steps {
-                sh 'mvn deploy'
+                sh 'mvn  -f ./backend/pom.xml  deploy' 
             }
             
         }
