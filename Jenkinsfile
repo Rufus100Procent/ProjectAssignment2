@@ -8,25 +8,25 @@ pipeline {
     stages {
         stage ('build') {
             steps {
-                sh 'mvn clean install' ./backend
+                sh 'mvn clean install'
             }
             
         }
         stage ('build') {
             steps {
-                sh 'mvn test' ./backend
+                sh 'mvn test'
             }
             
         }
         stage ('build') {
             steps {
-                sh 'mvn package' ./backend
+                sh 'mvn package'
             }
             
         }
         stage ('build') {
             steps {
-                sh 'mvn deploy' ./backend
+                sh 'mvn deploy'
             }
             
         }
