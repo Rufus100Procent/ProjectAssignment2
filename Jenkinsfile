@@ -1,5 +1,6 @@
 pipeline {
-      agent any
+    
+     agent any
 
       tools {
           maven "MY_MAVEN"
@@ -32,16 +33,17 @@ pipeline {
               steps {
                   echo 'packaging...'
                   sh 'mvn war:war' ./backend
-                   echo 'packaged'
-                }
-            }
+                
           stage('Deploy') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up -d --build'
                 sh 'rm -rf ./webapps'
                 sh 'git pull'
                 sh 'docker cp ROOT.war ./webapps:/usr/local/tomcat/webapps'
-                sh 'docker exec tomcat /usr/local/tomcat/bin/catalina.sh run'            }
+                sh 'docker exec tomcat /usr/local/tomcat/bin/catalina.sh run'
+
             }
 
+            }
+      }
 }
