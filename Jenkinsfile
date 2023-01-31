@@ -21,11 +21,7 @@ pipeline {
         stage ('package') {
             steps {
                 sh 'mvn -f ./backend/pom.xml  package' 
-            }
-            stage ('package') {
-                        steps {
-                            sh 'mvn -f ./backend/pom.xml  package'
-                        }
+
             
         }
         stage ('deploy') {
