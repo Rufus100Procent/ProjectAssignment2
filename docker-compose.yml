@@ -23,21 +23,21 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
-  tomcat:
-    container_name: tomcat
-    build: ./tomcat
+  backend:
+    container_name: backend
+    build: ./backend
     volumes:
-      - ./webapps:/usr/local/tomcat/webapps
-      - ./logs:/usr/local/tomcat/logs
+      - ./backend/webapps:/usr/local/tomcat/webapps
+      -  ./m2repo:/root/.m2/repository
     ports:
       - "8099:8080"
     restart: unless-stopped
   jenkins:
     container_name: jenkins
-    build: ./jenkins
+    image: jenkins/jenkins:jdk17
     volumes:
      - ./jenkins:/var/jenkins_home
-     - /var/run/docker.sock:/var/run/docker.sock
+     - ./backend/webapps:/artifacts
     ports:
         - 8050:8080
         - 50000:50000
@@ -47,6 +47,6 @@ volumes:
     name: m2repo
   nodemodules:
     name: nodemodules
-  jenkins_home:
-    name: jenkins_Home
+##  jenkins_home:
+##    name: jenkins_Home
  
