@@ -9,21 +9,28 @@ pipeline {
         stage ('clean') {
             steps {
                 dir('./backend') {
+                    sh 'pwd'
                     sh 'mvn clean'
                 }
         }
         }
-        stage ('test') {
+         stage('build') {
             steps {
-                sh 'mvn test -f ./backend' 
-                sh 'pwd'
+                echo 'building...'
+                sh 'mvn test-compile -f ./backend'
+                echo 'finished building'
             }
-            
+        }
+         stage('test') {
+            steps {
+                echo 'starting test.....'
+                sh 'mvn surefire:test'
+                echo 'finished test'
+            }
         }
          stage ('packagin in to war') {
             steps {
                 sh 'mvn war:war -f ./backend' 
-                sh 'pwd'
             }
             
         }
@@ -39,3 +46,5 @@ pipeline {
         }
     }
 }
+
+ 
