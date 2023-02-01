@@ -8,25 +8,32 @@ pipeline {
     stages {
         stage ('clean') {
             steps {
-                sh 'mvn -f ./backend/pom.xml  clean' 
-            
+                dir('./backend') {
+                    sh 'mvn clean'
+                }
         }
         }
         stage ('test') {
             steps {
-                sh 'mvn test' .
+                sh 'mvn test -f ./backend' 
+                sh 'pwd'
             }
             
         }
-        stage ('package') {
+         stage ('packagin in to war') {
             steps {
-                sh 'mvn -f ./backend/pom.xml  package' 
-
+                sh 'mvn war:war -f ./backend' 
+                sh 'pwd'
+            }
             
         }
         stage ('deploy') {
             steps {
-                sh 'mvn  -f ./backend/pom.xml  deploy' 
+                dir('./backend'){
+                    sh 'pwd'
+                    sh 'cp ./target/ROOT.war /artifacts' 
+                    sh 'pwd'
+                }
             }
             
         }
