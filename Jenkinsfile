@@ -50,8 +50,13 @@ pipeline {
             echo 'generating test report....'
             junit 'target/*reports/**/*.xml'
             echo 'test report generated'
+            echo 'The pipeline has finished'
+        }
+         success {
+            echo 'The pipeline was successful'
+        }
+        failure {
+            echo 'The pipeline failed'
         }
     }
 }
-
- 
