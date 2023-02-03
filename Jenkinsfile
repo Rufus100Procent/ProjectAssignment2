@@ -38,11 +38,6 @@ pipeline {
             }
             
         }
-      stage('Publish JUnit Reports') {
-            steps {
-                junit './backend/target/surefire-reports/*.xml'
-            }
-        }
         stage ('deploy') {
             steps {
                 dir('./backend'){
