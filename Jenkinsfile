@@ -50,10 +50,9 @@ pipeline {
  post {
         always {
             echo 'Pipeline completed'
-          
-         failure {
+        }
+  failure {
                 echo 'Pipeline failed'
             }
-        }
     }
 }
