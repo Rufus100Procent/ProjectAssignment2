@@ -11,7 +11,7 @@ pipeline {
             steps {
                 dir('./backend') {
                     sh 'pwd'
-                    sh 'mvn clean'
+                    sh 'rm -rf ./target'
                 }
         }
         }
@@ -29,7 +29,6 @@ pipeline {
                 echo 'starting test.....'
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
-                junit './backend/target/surefire-reports/*.xml'
             }
         }
 
