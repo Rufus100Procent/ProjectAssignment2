@@ -47,6 +47,7 @@ pipeline {
     post {
         always {
             echo 'generating test report....'
+            sh 'pwd'
             junit 'target/*reports/**/*.xml -f ./backend'
             echo 'test report generated'
             echo 'The pipeline has finished'
