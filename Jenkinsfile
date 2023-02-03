@@ -56,19 +56,7 @@ pipeline {
        
         
     }
-    post {
-        always {
-            echo 'echo' 
-        
-        }
-    }
-      success {
-            echo 'The pipeline was successful'
-        }
-        failure {
-            sh 'pwd'
-            echo 'The pipeline failed'
-        }
+
 
         
 }
