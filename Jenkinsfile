@@ -39,7 +39,6 @@ pipeline {
                 dir('./backend'){
                     sh 'pwd'
                     sh 'cp ./target/ROOT.war /artifacts' 
-                    junit 'target/*reports/**/*.xml'
                 }
             }
             
