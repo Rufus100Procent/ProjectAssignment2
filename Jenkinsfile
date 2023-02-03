@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+
+ agent any
 
     tools {
         maven "MY_MAVEN"
@@ -14,6 +15,7 @@ pipeline {
                 }
         }
         }
+
          stage('build') {
             steps {
                 echo 'building...'
@@ -22,15 +24,16 @@ pipeline {
                
             }
         }
-         stage('test') {
+        stage('test'){
             steps {
                 echo 'starting test.....'
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
+                junit './backend/target/surefire-reports/*.xml'
             }
         }
-         
-         stage ('packagin in to war') {
+
+        stage ('packagin in to war') {
             steps {
                 sh 'mvn war:war -f ./backend' 
             }
@@ -43,10 +46,6 @@ pipeline {
                     sh 'cp ./target/ROOT.war /artifacts' 
                 }
             }
-            
         }
- 
     }
-  
-
 }
