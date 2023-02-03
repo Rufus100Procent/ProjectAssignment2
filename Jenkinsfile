@@ -49,6 +49,7 @@ pipeline {
     }
  post {
         always {
+        junit './backend/target/surefire-reports/TEST-*xml'
             echo 'Pipeline completed'
         }
    success {
