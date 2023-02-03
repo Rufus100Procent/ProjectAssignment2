@@ -49,7 +49,7 @@ pipeline {
     }
  post {
         always {
-         junit 'target/*reports/**/*.xml'      
+         junit './backend/target/*reports/**/*.xml'      
          echo 'Pipeline completed'
         }
    success {
