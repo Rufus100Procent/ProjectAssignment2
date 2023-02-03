@@ -49,8 +49,8 @@ pipeline {
     }
  post {
         always {
-         junit './backend/target/*reports/**/*.xml'      
          echo 'Pipeline completed'
+         sh 'rm -rf ./target'
         }
    success {
             echo 'The pipeline was successful'
