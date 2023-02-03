@@ -50,9 +50,10 @@ pipeline {
  post {
         always {
             echo 'Pipeline completed'
-            if (currentBuild.result == 'SUCCESS') {
+            success {
                 echo 'Pipeline succeeded'
-            } else {
+            } 
+         failure {
                 echo 'Pipeline failed'
             }
         }
