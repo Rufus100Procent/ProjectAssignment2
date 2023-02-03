@@ -48,7 +48,7 @@ pipeline {
         always {
             echo 'generating test report....'
             sh 'pwd'
-            junit './target/surnfire-reports/*.xml -f ./backend'
+            junit '**/target/surefire-reports/TEST-*xml -f ./backend'
             echo 'test report generated'
             echo 'The pipeline has finished'
         }
