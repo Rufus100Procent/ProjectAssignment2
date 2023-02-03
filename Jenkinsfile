@@ -47,4 +47,14 @@ pipeline {
             }
         }
     }
+ post {
+        always {
+            echo 'Pipeline completed'
+            if (currentBuild.result == 'SUCCESS') {
+                echo 'Pipeline succeeded'
+            } else {
+                echo 'Pipeline failed'
+            }
+        }
+    }
 }
