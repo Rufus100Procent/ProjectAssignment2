@@ -50,7 +50,7 @@ pipeline {
  post {
         always {
          echo 'Pipeline completed'
-         sh 'rm -rf ./target'
+         sh 'rm -rf ./backend/target'
         }
    success {
             echo 'The pipeline was successful'
