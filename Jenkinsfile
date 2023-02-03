@@ -31,17 +31,17 @@ pipeline {
                 echo 'finished test'
             }
         }
-        stage('Publish JUnit Reports') {
-            steps {
-                junit './backend/target/surefire-reports/*.xml'
-            }
-        }
 
         stage ('packagin in to war') {
             steps {
                 sh 'mvn war:war -f ./backend' 
             }
             
+        }
+      stage('Publish JUnit Reports') {
+            steps {
+                junit './backend/target/surefire-reports/*.xml'
+            }
         }
         stage ('deploy') {
             steps {
