@@ -46,16 +46,19 @@ pipeline {
     }
     post {
         always {
+            dir ('./backend'){
             echo 'generating test report....'
             sh 'pwd'
             junit '**/target/surefire-reports/TEST-*xml'
             echo 'test report generated'
             echo 'The pipeline has finished'
         }
+        }
          success {
             echo 'The pipeline was successful'
         }
         failure {
+            sh 'pwd'
             echo 'The pipeline failed'
         }
     }
