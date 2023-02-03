@@ -56,6 +56,12 @@ pipeline {
        
         
     }
+    post {
+        always {
+            echo 'echo' 
+        
+        }
+    }
       success {
             echo 'The pipeline was successful'
         }
@@ -63,4 +69,6 @@ pipeline {
             sh 'pwd'
             echo 'The pipeline failed'
         }
+
+        
 }
