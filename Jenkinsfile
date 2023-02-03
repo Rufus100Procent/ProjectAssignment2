@@ -27,6 +27,13 @@ pipeline {
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
             }
+             post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+                failure {
+                    // actions to take if the build fails
+                }
         }
          
          stage ('packagin in to war') {
@@ -44,13 +51,7 @@ pipeline {
             }
             
         }
-          success {
-            echo 'The pipeline was successful'
-        }
-        failure {
-            sh 'pwd'
-            echo 'The pipeline failed'
-        }
+ 
     }
   
 
