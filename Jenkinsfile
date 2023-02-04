@@ -1,4 +1,4 @@
-pipeline {
+    pipeline {
 
  agent any
 
@@ -7,11 +7,19 @@ pipeline {
     }
 
     stages {
+
+            stage("Clone Repository") {
+            steps {
+             echo 'downloading github project...'
+             git credentialsId: 'Rufus100Procent', url: 'https://github.com/Rufus100Procent/ProjectAssignment2.git' 
+              }
+        }
+
         stage ('clean') {
             steps {
                 dir('./backend') {
                     sh 'pwd'
-                    sh 'rm -rf ./target'
+                    sh 'mvn clean'
                 }
         }
         }
@@ -49,8 +57,11 @@ pipeline {
     }
  post {
         always {
-         echo 'Pipeline completed'
-         sh 'rm -rf ./backend/target'
+        echo 'generating test report....'
+        junit './backend/target/*reports/**/*.xml'
+        echo 'test report generated'
+        echo 'Pipeline completed'
+        sh 'rm -rf ./backend/target'
         }
    success {
             echo 'The pipeline was successful'
