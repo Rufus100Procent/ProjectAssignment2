@@ -39,6 +39,8 @@ pipeline {
             steps {
                 sh 'mvn war:war -f ./backend'
                 echo 'ROOT.war is ready to be used'
+                junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
+
             }
         }
         stage('Deploy') {
@@ -52,7 +54,6 @@ pipeline {
     post {
         always {
             echo 'Pipeline completed'
-            junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
         }
         success {
              echo 'The pipeline was successful'
