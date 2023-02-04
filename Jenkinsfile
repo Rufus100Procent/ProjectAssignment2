@@ -67,9 +67,6 @@
     }
  post {
         always {
-        echo 'generating test report....'
-        junit './backend/target/*reports/**/*.xml'
-        echo 'test report generated'
         echo 'Pipeline completed'
         sh 'rm -rf ./backend/target'
         }
