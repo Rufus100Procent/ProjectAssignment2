@@ -44,7 +44,7 @@
                 always {
                     sh 'pwd'
                     sh 'sleep 5'
-                    junit './backend/target/*reports/**/*.xml'
+                    junit allowEmptyResults: true, testResults: './backend/target/*reports/**/*.xml'
                     sh 'pwd'
                 }
              }
