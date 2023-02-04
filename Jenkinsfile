@@ -43,6 +43,7 @@
              post {
                 always {
                     sh 'pwd'
+                    sh 'sleep 60'
                     junit './backend/target/surefire-reports/*.xml'
                 }
              }
