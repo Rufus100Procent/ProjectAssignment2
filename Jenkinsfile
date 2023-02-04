@@ -33,14 +33,14 @@ pipeline {
                 echo 'starting test.....'
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
+                junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
+
             }
         }
         stage('packing into war') {
             steps {
                 sh 'mvn war:war -f ./backend'
                 echo 'ROOT.war is ready to be used'
-                junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
-
             }
         }
         stage('Deploy') {
