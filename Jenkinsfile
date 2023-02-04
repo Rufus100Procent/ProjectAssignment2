@@ -45,7 +45,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline completed'
-            junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
+            junit 'backend/target/*reports/**/*.xml'
         }
         success {
              echo 'The pipeline was successful'
