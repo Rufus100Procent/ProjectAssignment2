@@ -58,17 +58,20 @@
             }
         }
     }
- post {
-        always {
-        echo 'Pipeline completed'
-       sh 'ls ./backend/target/surefire-reports/*.xml'
-       junit allowEmptyResults: true, testResults: './backend/target/surefire-reports/*.xml'
-        sh 'rm -rf ./backend/target'
-        }
-   success {
-            echo 'The pipeline was successful'
-        }
-  failure {
+        post {
+           
+          always {
+             echo 'Pipeline completed'
+             sh 'ls ./backend/target/surefire-reports/*.xml'
+             junit allowEmptyResults: true, testResults: './backend/target/surefire-reports/*.xml'
+              sh 'rm -rf ./backend/target'
+                }
+            
+            success {
+                echo 'The pipeline was successful'
+                 }
+            
+           failure {
                 echo 'Pipeline failed'
             }
     }
