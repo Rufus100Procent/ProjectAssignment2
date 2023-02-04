@@ -38,9 +38,11 @@
                 echo 'starting test.....'
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
+                sh 'pwd'
             }
              post {
                 always {
+                    sh 'pwd'
                     junit './backend/target/surefire-reports/*.xml'
                 }
              }
