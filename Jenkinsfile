@@ -28,6 +28,13 @@ pipeline {
                 echo 'finished building'
             }
         }
+        stage('test'){
+            steps {
+                echo 'starting test.....'
+                sh 'mvn surefire:test -f ./backend'
+                echo 'finished test'
+            }
+        }
         stage('packing into war') {
             steps {
                 sh 'mvn war:war -f ./backend'
@@ -45,7 +52,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline completed'
-            junit 'backend/target/*reports/**/*.xml'
+            junit ' backend/target/surefire-reports/*.xml'
         }
         success {
              echo 'The pipeline was successful'
