@@ -46,7 +46,6 @@ pipeline {
         always {
             echo 'Pipeline completed'
             junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
-            sh 'rm -rf ./backend/target'
         }
         success {
              echo 'The pipeline was successful'
