@@ -43,8 +43,8 @@
              post {
                 always {
                     sh 'pwd'
-                    sh 'sleep 30'
-                    junit './backend/target/surefire-reports/*'
+                    sh 'sleep 5'
+                    sh './backend/target/surefire-reports/*'
                     sh 'pwd'
                 }
              }
