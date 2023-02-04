@@ -44,7 +44,7 @@
                 always {
                     sh 'pwd'
                     sh 'sleep 5'
-                    sh './backend/target/surefire-reports/*'
+                    junit './backend/target/surefire-reports/*'
                     sh 'pwd'
                 }
              }
