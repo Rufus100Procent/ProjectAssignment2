@@ -40,15 +40,7 @@
                 echo 'finished test'
                 sh 'pwd'
             }
-             post {
-                always {
-                    sh 'pwd'
-                    sh 'sleep 5'
-                    sh 'ls ./backend/target/surefire-reports/*.xml'
-                    junit allowEmptyResults: true, testResults: './backend/target/surefire-reports/*.xml'
-                    sh 'pwd'
-                }
-             }
+  
         }
 
         stage ('packagin in to war') {
@@ -69,6 +61,8 @@
  post {
         always {
         echo 'Pipeline completed'
+       sh 'ls ./backend/target/surefire-reports/*.xml'
+       junit allowEmptyResults: true, testResults: './backend/target/surefire-reports/*.xml'
         sh 'rm -rf ./backend/target'
         }
    success {
