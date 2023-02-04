@@ -11,7 +11,8 @@
             stage("Clone Repository") {
                  steps {
                      echo 'downloading github project...'
-                     git url: 'https://github.com/Rufus100Procent/ProjectAssignment2.git' 
+                     git branch: 'main', credentialsId: '1234', url: 'https://github.com/Rufus100Procent/ProjectAssignment2.git' 
+                    
               }
         }
 
