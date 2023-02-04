@@ -26,8 +26,6 @@ pipeline {
                 echo 'building...'
                 sh 'mvn test-compile -f ./backend'
                 echo 'finished building'
-                junit 'backend/target/surefire-reports/*xml'
-                //junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
             }
         }
         stage('packing into war') {
@@ -46,7 +44,9 @@ pipeline {
     }
     post {
         always {
-            echo 'Pipeline completed'        
+            echo 'Pipeline completed'
+            sh 'ls ./backend/target/surefire-reports/*.xml'
+            junit allowEmptyResults: true, testResults: 'backend/target/surefire-reports/*.xml'
             sh 'rm -rf ./backend/target'
         }
         success {
