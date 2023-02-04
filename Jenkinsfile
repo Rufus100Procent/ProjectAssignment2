@@ -41,7 +41,7 @@
             }
              post {
                 always {
-                    junit './backend/target/*reports/**/*.xml'
+                    junit './backend/target/surefire-reports/*.xml'
                 }
              }
         }
