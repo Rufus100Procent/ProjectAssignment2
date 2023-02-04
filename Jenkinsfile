@@ -39,6 +39,11 @@
                 sh 'mvn surefire:test -f ./backend'
                 echo 'finished test'
             }
+             post {
+                always {
+                    junit './backend/target/*reports/**/*.xml'
+                }
+             }
         }
 
         stage ('packagin in to war') {
